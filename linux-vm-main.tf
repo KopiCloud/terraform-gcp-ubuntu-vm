@@ -8,10 +8,12 @@ resource "random_id" "instance_id" {
 }
 
 # Bootstrapping Script to Install Apache
-data "template_file" "linux-userdata" {
-  template = <<EOF
+data "template_file" "linux-metadata" {
+template = <<EOF
 sudo apt-get update; 
 sudo apt-get install -yq build-essential apache2;
+sudo systemctl start apache2;
+sudo systemctl enable apache2;
 EOF
 }
 
@@ -29,7 +31,7 @@ resource "google_compute_instance" "vm_instance_public" {
     }
   }
 
-  metadata_startup_script = data.template_file.linux-userdata.rendered
+  metadata_startup_script = data.template_file.linux-metadata.rendered
 
   network_interface {
     network       = google_compute_network.vpc.name
