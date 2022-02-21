@@ -1,6 +1,6 @@
 # Application Definition 
 company     = "kopicloud"
-app_name    = "iac-test"
+app_name    = "iac-ubuntu"
 app_domain  = "kopicloud.com"
 environment = "dev" # Dev, Test, Prod, etc
 
@@ -11,7 +11,7 @@ gcp_zone      = "europe-west4-b"
 gcp_auth_file = "../auth/kopicloud-medium.json"
 
 # GCP Netwok
-network-subnet-cidr = "10.10.1.0/24"
+network-subnet-cidr = "10.10.10.0/24"
 
 # Linux VM
 linux_instance_type = "f1-micro"
